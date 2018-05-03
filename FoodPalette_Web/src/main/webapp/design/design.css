@@ -1,0 +1,157 @@
+@CHARSET "EUC-KR";
+
+body {
+	font-style : normal;
+}
+table {
+	padding: 10px 40px;
+	background-color:white;
+	border: thin lightgray;
+	caption-side : top;
+	border-collapse : collapse;
+}
+
+#font{
+	color : #5397e1;
+}
+
+#message{
+	color : gray;
+}
+.loginwindow{
+	margin-bottom : 20px;
+}
+.search{
+	padding : 10px 10px; 
+}
+#icon{
+	padding : 0px 0px;
+	margin-right : 5px;
+}
+
+
+/* input type text & password css 설정 */
+input[type=text], input[type=password]{
+    width: 100%;
+    color: gray;
+    padding: 5px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+/* div { */
+/* 	border : 1px solid gray; */
+/* 	border-radius: 5px; */
+/*     background-color: green; */
+/*     padding: 20px; */
+/* } */
+#search_div{
+	margin-left : 30px;
+	border : 1px solid white;
+	background-color: white;
+	vertical-align : middle;
+}
+
+/* button css 설정 */
+input[type=submit], input[type=button] {
+    width: 100%;
+    background-color: DodgerBlue;
+    color: white;
+    padding: 5px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover, input[type=button]:hover {
+    background-color: LightSkyBlue;
+}
+input[type=submit]:active, input[type=button]:active {
+    background-color: LightSkyBlue;
+}
+
+
+
+
+
+/* 검색창 */
+a:link{
+	color : DimGray;
+	text-decoration:none; /* 하이퍼링크 밑줄을 없애주는 명령문 */
+}
+a:visited{
+	color : DimGray;
+	text-decoration:none;
+}
+a:hover{
+	color : DeepSkyBlue;
+	text-decoration:none;
+} 
+ 
+.box{
+  margin: 10px auto;
+  width: 300px;
+  height: 50px;
+}
+.container-1{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  
+-webkit-transition: background .55s ease;
+-moz-transition: background .55s ease;
+-ms-transition: background .55s ease;
+-o-transition: background .55s ease;
+transition: background .55s ease;
+}
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  background: #2b303b;
+  border: 1px solid #2b303b;
+  font-size: 10pt;
+  float: left;
+  color: #63717f;
+  padding-left: 35px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+-webkit-transition: background .55s ease;
+-moz-transition: background .55s ease;
+-ms-transition: background .55s ease;
+-o-transition: background .55s ease;
+transition: background .55s ease;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-1 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 13px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #ffffff;
+}

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="palette">
+
+<select id="checkEmail" parameterType="String" resultType="Integer">
+select count(*) as num from user_info where user_email=#{user_email}
+</select>
+<select id="checkNick" parameterType="String" resultType="Integer">
+select count(*) as num from user_info where user_nick=#{user_nick}
+</select>
+
+<insert id="insertAccount" parameterType="logic.UserInfo">
+insert into user_info 
+(user_nick, user_name, user_email, user_password, user_question,
+user_answer, user_profile_img, user_fb_check) 
+values(
+#{user_nick},#{user_name},#{user_email},#{user_password, jdbcType=VARCHAR},
+#{user_question, jdbcType=VARCHAR},#{user_answer, jdbcType=VARCHAR},
+#{user_profile_img},#{user_fb_check})
+</insert>
+
+<select id="checkLogin" parameterType="String" resultType="String">
+select user_password from user_info where user_email=#{user_email}
+</select>
+
+<select id="fb_checkLogin" parameterType="String" resultType="String">
+select user_fb_check from user_info where user_email=#{user_email} 
+</select>
+
+<select id="selectQuestion" parameterType="String" resultType="String">
+select user_question from user_info where user_email=#{user_email}
+</select>
+
+<select id="checkAnswer" parameterType="String" resultType="String">
+select user_answer from user_info where user_email=#{user_email}
+</select>
+
+<update id="updatePassword" parameterType="logic.ChangePwd">
+update user_info set user_password=#{user_password} where user_email=#{user_email}    
+</update>
+<update id="updatePassword_mypage" parameterType="logic.ChangePwd_Mypage">
+update user_info set user_password=#{change_password} where user_email=#{user_email}    
+</update>
+
+<select id="getLoginUserNick" parameterType="String" resultType="String">
+select user_nick from user_info where user_email=#{user_email}
+</select>
+
+<select id="getLoginUserProfileImg" parameterType="String" resultType="String">
+select user_profile_img from user_info where user_email=#{user_email}
+</select>
+
+<update id="updateProfile" parameterType="logic.UpdateProfile">
+update user_info set user_profile_img=#{user_profile_img} where user_email=#{user_email}   
+</update>
+
+<select id="getCurrentPwd" parameterType="String" resultType="String">
+select user_password from user_info where user_email=#{user_email}
+</select>
+
+<select id="palette.checkRecipeIdCount" parameterType="String" resultType="logic.UploadUtil">
+	select recipe_id as select_recipe_id from recipe_info
+	where recipe_id like #{user_nick} || '\_%' escape '\'
+</select>
+	
+<select id="palette.checkRecipeCountMax" resultType="Integer">
+	select max(recipe_count) from recipe_info
+</select>
+	
+<insert id="palette.postRecipe" parameterType="logic.RecipeInfo">
+	insert into recipe_info
+	(recipe_id, recipe_count, recipe_content, recipe_hashtag,
+	recipe_img1, recipe_img2, recipe_img3, recipe_img4, recipe_img5,
+	recipe_img6, recipe_img7, recipe_img8, recipe_img9, recipe_img10,
+	recipe_img_order, recipe_posttime, user_nick)
+	values
+	(#{recipe_id},#{recipe_count},#{recipe_content},#{recipe_hashtag},
+	#{recipe_img1},#{recipe_img2, jdbcType=VARCHAR},#{recipe_img3, jdbcType=VARCHAR},
+	#{recipe_img4, jdbcType=VARCHAR},#{recipe_img5, jdbcType=VARCHAR},#{recipe_img6, jdbcType=VARCHAR},
+	#{recipe_img7, jdbcType=VARCHAR},#{recipe_img8, jdbcType=VARCHAR},#{recipe_img9, jdbcType=VARCHAR},
+	#{recipe_img10, jdbcType=VARCHAR},#{recipe_img_order},#{recipe_posttime}, #{user_nick})
+</insert>
+
+
+<select id="palette.getTotalRecipeList" resultType="logic.ListInfo">
+	select u.user_nick as user_nick, u.user_profile_img as user_profile_img, r.recipe_posttime as recipe_posttime,
+	r.recipe_img1 as recipe_img1, r.recipe_content as recipe_content, r.recipe_hashtag as recipe_hashtag,
+	r.recipe_id as recipe_id
+	from user_info u, recipe_info r
+	where u.user_nick = r.user_nick
+	order by r.recipe_count desc
+</select>
+
+
+<select id="getMaxRecipeNum" parameterType="String" resultType="Integer">
+select count(*) as num from recipe_info where user_nick=#{user_nick}
+</select>
+
+<select id="getFirstImgs" parameterType="String" resultType="logic.FirstImages">
+select recipe_img1, recipe_id from recipe_info where user_nick=#{user_nick} 
+order by recipe_posttime desc
+</select>
+
+<select id="palette.getSelectedRecipe" parameterType="String" resultType="logic.ListInfo">
+select u.user_nick as user_nick, u.user_profile_img as user_profile_img, r.recipe_posttime as recipe_posttime,
+r.recipe_img1 as recipe_img1, r.recipe_img2 as recipe_img2, r.recipe_img3 as recipe_img3, r.recipe_img4 as recipe_img4,
+r.recipe_img5 as recipe_img5, r.recipe_img6 as recipe_img6, r.recipe_img7 as recipe_img7, r.recipe_img8 as recipe_img8,
+r.recipe_img9 as recipe_img9, r.recipe_img10 as recipe_img10, r.recipe_img_order as recipe_img_order,
+r.recipe_content as recipe_content, r.recipe_hashtag as recipe_hashtag
+from user_info u, recipe_info r
+where u.user_nick = r.user_nick and recipe_id = #{id}
+</select>
+
+<insert id="insertHeartInfo" parameterType="logic.HeartUtil">
+insert into heart_info values(#{recipe_id}, #{heart})
+</insert>
+
+<select id="getMaxHeart" parameterType="String" resultType="Integer">
+select heart from heart_info where recipe_id=#{recipe_id}
+</select>
+
+<select id="getHeartCheck" parameterType="logic.HeartUtil" resultType="String">
+select heart_check from my_heart_info 
+where recipe_id=#{recipe_id} and user_nick=#{user_nick} 
+</select>
+
+<insert id="insertMyHeartInfo" parameterType="logic.HeartUtil">
+insert into my_heart_info values(#{recipe_id},#{user_nick},#{heart_check})
+</insert>
+
+<delete id="deleteMyHeartInfo" parameterType="logic.HeartUtil">
+delete from my_heart_info where recipe_id=#{recipe_id} and user_nick=#{user_nick}
+</delete>
+
+<update id="updateHeartInfo" parameterType="logic.HeartUtil">
+update heart_info set heart=#{heart} where recipe_id=#{recipe_id}
+</update>
+
+<!-- bang -->
+<select id="getMaxComment" parameterType="String" resultType="Integer">
+select count(*) as num from comment_info where recipe_id=#{recipe_id}
+</select>
+
+<select id="getMaxCommentOrder" parameterType="String" resultType="Integer">
+select max(comment_order) as num from comment_info where recipe_id=#{recipe_id}
+</select>
+
+<insert id="insertComment" parameterType="logic.Comment">
+insert into comment_info values(
+#{recipe_id},#{comment_text},#{comment_posttime},
+#{comment_order},#{user_nick})
+</insert>
+
+<select id="selectComment" parameterType="String" resultType="logic.Comment">
+select u.user_profile_img, c.user_nick, c.comment_text, c.comment_posttime, c.comment_order, c.recipe_id
+from user_info u, comment_info c 
+where c.user_nick=u.user_nick and c.recipe_id=#{recipe_id} 
+order by c.comment_order
+</select>
+
+<delete id="deleteComment" parameterType="logic.Comment">
+delete from comment_info where recipe_id=#{recipe_id} and user_nick=#{user_nick} and comment_order=#{comment_order}
+</delete>
+
+<select id="searchRecipe" parameterType="String" resultType="logic.ListInfo">
+select u.user_nick as user_nick, 
+	u.user_profile_img as user_profile_img, 
+	r.recipe_posttime as recipe_posttime, 
+	r.recipe_img1 as recipe_img1, 
+	r.recipe_content as recipe_content, 
+	r.recipe_hashtag as recipe_hashtag, 
+	r.recipe_id as recipe_id 
+	from user_info u, recipe_info r 
+	where u.user_nick = r.user_nick 
+	and r.recipe_hashtag like '%'||#{recipe_hashtag}||'%' 
+	order by r.recipe_count desc 
+</select>
+
+<!-- 4/20일 수정 -->
+<!-- jung add -->
+<select id="getMaxCilpOrder" parameterType="String" resultType="Integer">
+select max(clip_order) from recipe_book_info
+where clip_user = #{clip_user}
+</select>
+
+<insert id="insertRecipeBook" parameterType="logic.RecipeBook">
+insert into recipe_book_info values(#{recipe_id}, #{clip_order}, #{clip_user})	
+</insert>
+
+<delete id="deleteRecipeBook" parameterType="logic.RecipeBookUtil">
+delete from recipe_book_info where recipe_id=#{recipe_id} and clip_user=#{clip_user}
+</delete>
+
+<select id="checkRecipeIsCliped" parameterType="logic.RecipeBookUtil" resultType="Integer">
+select count(*) from recipe_book_info where recipe_id=#{recipe_id} and clip_user = #{clip_user}
+</select>
+
+<select id="getMaxClipByUser" parameterType="String" resultType="Integer">
+select count(*) from recipe_book_info where clip_user = #{clip_user}
+</select>
+
+<select id="getClipImgByUser" parameterType="String" resultType="logic.RecipeBookUtil">
+select r.recipe_id as recipe_id, r.recipe_img1 as recipe_img1 from recipe_info r, recipe_book_info b
+where r.recipe_id = b.recipe_id and b.clip_user = #{clip_user}
+order by b.clip_order desc
+</select>
+
+<select id="getRecipeTobeModify" parameterType="String" resultType="logic.RecipeInfo">
+select * from recipe_info where recipe_id=#{recipe_id}
+</select>
+
+<update id="updateReicpe" parameterType="logic.RecipeInfo">
+update recipe_info set recipe_content = #{recipe_content}, recipe_hashtag=#{recipe_hashtag},
+recipe_img1=#{recipe_img1}, recipe_img2=#{recipe_img2, jdbcType=VARCHAR},
+recipe_img3=#{recipe_img3, jdbcType=VARCHAR},recipe_img4=#{recipe_img4, jdbcType=VARCHAR},
+recipe_img5=#{recipe_img5, jdbcType=VARCHAR},recipe_img6=#{recipe_img6, jdbcType=VARCHAR},
+recipe_img7=#{recipe_img7, jdbcType=VARCHAR},recipe_img8=#{recipe_img8, jdbcType=VARCHAR},
+recipe_img9=#{recipe_img9, jdbcType=VARCHAR},recipe_img10=#{recipe_img10, jdbcType=VARCHAR}
+where recipe_id=#{recipe_id} 
+</update>
+
+<delete id="deleteRecipe" parameterType="String">
+delete from recipe_info where recipe_id=#{recipe_id}
+</delete>
+
+</mapper>

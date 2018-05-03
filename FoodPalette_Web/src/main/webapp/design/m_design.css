@@ -1,0 +1,102 @@
+@CHARSET "EUC-KR";
+
+/* 검색창 */
+a:link{
+	color : DimGray;
+	text-decoration:none; /* 하이퍼링크 밑줄을 없애주는 명령문 */
+}
+a:visited{
+	color : DimGray;
+	text-decoration:none;
+}
+a:hover{
+	color : DeepSkyBlue;
+	text-decoration:none;
+} 
+
+.box{
+  margin: 10px auto;
+  width: 300px;
+  height: 50px;
+}
+.container-1{
+  width: 300px;
+  vertical-align: middle;
+  white-space: nowrap;
+  position: relative;
+  
+-webkit-transition: background .55s ease;
+-moz-transition: background .55s ease;
+-ms-transition: background .55s ease;
+-o-transition: background .55s ease;
+transition: background .55s ease;
+}
+.container-1 input#search{
+  width: 300px;
+  height: 50px;
+  
+  padding-top:10px;
+  padding-bottom:10px;
+  
+  background: #2b303b;
+  border: 1px solid #2b303b;
+  font-size: 10pt;
+  float: left;
+  color: #63717f;
+  padding-left: 35px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  
+-webkit-transition: background .55s ease;
+-moz-transition: background .55s ease;
+-ms-transition: background .55s ease;
+-o-transition: background .55s ease;
+transition: background .55s ease;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: #65737e;
+}
+ 
+.container-1 input#search:-moz-placeholder { /* Firefox 18- */
+   color: #65737e;  
+}
+ 
+.container-1 input#search::-moz-placeholder {  /* Firefox 19+ */
+   color: #65737e;  
+}
+ 
+.container-1 input#search:-ms-input-placeholder {  
+   color: #65737e;  
+}
+
+.container-1 .icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 13px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+    background: #ffffff;
+}
+
+
+table {
+	padding: 10px 40px;
+	background-color:white;
+	border: thin lightgray;
+	caption-side : top;
+	border-collapse : collapse;
+}
+
+.search{
+	padding : 10px 10px; 
+}
+#icon{
+	padding : 0px 0px;
+	margin-right : 5px;
+}

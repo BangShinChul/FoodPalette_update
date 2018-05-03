@@ -1,0 +1,23 @@
+@CHARSET "EUC-KR";
+
+.photo1 {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+}
+.photo2 {
+    width: 100px; height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+.photo3 {
+    width: 100px; height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.photo4 {
+    width: 100px; height: 100px;
+    object-fit: cover;
+    object-position: bottom;
+    border-radius: 50%;
+}
