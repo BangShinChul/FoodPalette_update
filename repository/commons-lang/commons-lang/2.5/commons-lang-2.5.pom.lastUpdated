@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Sun Apr 22 21:29:04 KST 2018
+https\://code.lds.org/nexus/content/groups/main-repo/.error=
+https\://code.lds.org/nexus/content/groups/main-repo/.lastUpdated=1524400143549
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1524400144216
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact commons-lang\:commons-lang\:pom\:2.5 from/to central (https\://repo.maven.apache.org/maven2)\: C\:\\Users\\bsc02\\.m2\\repository\\commons-lang\\commons-lang\\2.5\\aether-16661412-255c-4bb2-bc50-f3d8fbb95801-commons-lang-2.5.pom-in-progress (\uC9C0\uC815\uB41C \uD30C\uC77C\uC744 \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4)

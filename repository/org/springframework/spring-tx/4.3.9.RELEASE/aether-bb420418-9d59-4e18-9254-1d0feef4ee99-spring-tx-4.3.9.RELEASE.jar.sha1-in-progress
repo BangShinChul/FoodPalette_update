@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" lang="en">
+<head>
+<meta http-equiv="x-availability" content="out of service"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="monitor" content="Official Web site of The Church of Jesus Christ of Latter-day Saints © 2010 Intellectual Reserve, Inc.. MonitorApp" />
+<link type="text/css" href="alerts.css" rel="stylesheet" />
+<title>The website is temporarily down.</title>
+</head>
+<body id="error-page">
+
+<div class="supercenter">
+	<center>
+	<h1><font color="#333366">This Web site is down for maintenance.</font></h1>
+	<p>We're sorry about the inconvenience. Please come back later. </p>
+        <p><a href="javascript:history.back()">Click here</a> to try again.</p>
+
+	<div style="border-top: 0px solid #ddd;">
+		<p><img src="logo-english.gif" height="67" width="175" /></p>
+	</div>
+	</center>
+</div>
+
+</body>
+</html>
+

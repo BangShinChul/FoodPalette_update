@@ -1,0 +1,6 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Mon Apr 09 16:47:15 KST 2018
+https\://code.lds.org/nexus/content/groups/main-repo/.error=
+https\://code.lds.org/nexus/content/groups/main-repo/.lastUpdated=1523260034733
+@default-central-https\://repo.maven.apache.org/maven2/.lastUpdated=1523260035156
+https\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.mybatis\:mybatis-parent\:pom\:21 from/to central (https\://repo.maven.apache.org/maven2)\: C\:\\Users\\bsc02\\.m2\\repository\\org\\mybatis\\mybatis-parent\\21\\aether-6b6c6c2e-10a1-408f-9655-7b9684e0fd81-mybatis-parent-21.pom-in-progress (\uC9C0\uC815\uB41C \uD30C\uC77C\uC744 \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4)
